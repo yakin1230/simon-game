@@ -5,6 +5,7 @@ let started = false;
 let level = 0;
 
 let h2 = document.querySelector("h2");
+let startBtn = document.querySelector("#startBtn");
 
 
 document.addEventListener("keypress", function(){
@@ -12,6 +13,17 @@ document.addEventListener("keypress", function(){
         console.log("game is started");
         started = true;
 
+        levelUp();
+    }
+});
+startBtn.addEventListener("click", function(){
+    if(started == false){
+        started = true;
+        level = 0;
+        gameSeq = [];
+        userSeq = [];
+
+        startBtn.style.display = "none"; // button hide
         levelUp();
     }
 });
@@ -60,6 +72,8 @@ function checkAns(Idx){
             document.querySelector("body").style.backgroundColor = "white";
     }, 150);
         reset();
+        startBtn.style.display = "block";
+        startBtn.innerText = "Restart Game";
     }
 }
 
